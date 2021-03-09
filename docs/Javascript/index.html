@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>台灣景點介紹</title>
+        <link rel="stylesheet" href="index.css" type="text/css" media="all" />
+        <script type="text/javascript">
+            function getData() {
+                let req = new XMLHttpRequest();
+                req.open("get","https://padax.github.io/taipei-day-trip-resources/taipei-attractions.json")
+                req.onload = function() { 
+                    // json APIs
+                    let raw_data = JSON.parse(this.response);
+                    raw_data = raw_data.result.results;
+                    let title_list = [];
+                    let img_url = [];
+                    
+                    // titles 
+                    raw_data.forEach(element => {
+                        title_list.push(element.stitle);
+                    });
+                    
+                    // ETL image URL
+                    raw_data.forEach(element => {
+                        let clean_img = element.file;
+                        clean_img = clean_img.replaceAll("http", " http");
+                        clean_img = clean_img.split(" ");
+                        img_url.push(clean_img[1]);  
+                    });
+
+                    
+                    // querySelectorAll,createElement,appendChild 搭配用法。
+                    // 如何控制url中圖片的大小? =>目前先用@media query控制，但不完美
+                    const container = document.querySelectorAll(".container");
+                    let count_views = 0;
+                    container.forEach(index => {   
+                        for (let i=0; i<4; i++) {
+                            const box = document.createElement("div");
+                            const img = document.createElement("img");
+                            const h4 = document.createElement("h4");
+                            box.className = "box";
+                            img.setAttribute("src", img_url[count_views]);
+                            h4.appendChild(document.createTextNode(title_list[count_views]));
+                            count_views++;
+                            index.appendChild(box);
+                            box.appendChild(img);
+                            box.appendChild(h4);
+                        }
+                    });
+                    
+
+                    // querySelector 用8塊試試 => 有對齊問題
+                    // const test = document.querySelector(".container");
+                    // for(let i=0; i<8; i++) {
+                    //     var box = document.createElement("div");
+                    //     var img = document.createElement("img");
+                    //     var h4 = document.createElement("h4");
+                    //     box.className = "box";
+                    //     test.appendChild(box);
+                    //     img.setAttribute("src", img_url[i]);
+                    //     h4.appendChild(document.createTextNode(title_list[i]));
+                    //     box.appendChild(img);
+                    //     box.appendChild(h4);
+                    // }
+                    // for (let i=0; i<=8; i++) {
+                    //     app.appendChild(img);
+                    //     app.appendChild(h4);
+                    //     img.src = img_url[i];
+                    //     h4.textContent = title_list[i];
+                    // }
+
+                }
+                req.send();
+            }
+        </script>
+    </head>
+    <body onload="getData();">
+        <header>
+            <div class="logo">My Website</div>
+            <div class="blank"></div>
+            <input type="checkbox" id=burger>
+            <label for="burger">
+                <img src="icon/burger.png" id="icon">
+            </label>
+            <ul class="menu">
+                <li class="hover"><a href="">Item 1</a></li>
+                <li class="hover"><a href="">Item 2</a></li>
+                <li class="hover"><a href="">Item 3</a></li>
+                <li class="hover"><a href="">Item 4</a></li>
+            </ul>
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <div class="item">Item 4</div>
+        </header>
+        <nav>
+            <div class="welcome">Welcome to MyHome</div>
+        </nav>
+        <main>
+            <div class="container">
+            </div>
+            <div class="container">
+            </div>
+        </main>
+        <footer>
+            <div>
+                <p>Copyright© Chi 2021</p>
+            </div>
+        </footer>
+    </body>
+</html>

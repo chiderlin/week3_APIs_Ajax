@@ -1,0 +1,149 @@
+body{margin:0px}
+header{
+    font-size:20px;
+    display:flex;
+    padding:0px;
+    position:fixed;top:0px;width:100%;height:45px; 
+	background-color: white;
+}
+
+.blank{
+    flex:auto;
+}
+.logo{
+    padding:10px;
+    font-weight:bold;
+    flex:none;
+}
+.item{
+    flex:none;
+    padding:10px;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:black;
+}
+
+#icon{
+    width:34px;
+    height:31px;
+    padding:5px;
+    display:none;
+}
+.menu{
+    background-color:#C4E1FF;
+    list-style-type: none;
+    height:100vh;
+    width:50%;
+    position:absolute;top:25px;left:0;
+    padding:0px;
+    transform: translateX(-100%);
+    transition:0.5s;
+}
+
+.menu li a{
+    display:block;
+    padding:15px;
+    text-align:left;
+    border-bottom:2px solid #4F4F4F;
+    color:#4F4F4F;
+    font-weight: bold;
+}
+
+#burger{display:none;}
+#burger:checked ~ .menu{
+    transform: translateX(0%);
+}
+
+.hover:hover{
+    background-color:#D2E9FF;
+}
+.menu li a:hover{
+    color:black;
+}
+
+
+nav{
+    background-color:#ACD6FF;
+    margin-top:45px;
+    height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.welcome{
+    flex:none;
+    font-size:40px;
+    font-weight:bold;
+}
+
+main{
+    margin-top:40px;
+}
+
+.container{
+    display:flex;flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+
+}
+.box{
+    width:270px;height:auto;
+    background-color:#C4E1FF;
+    margin:10px;
+    max-width:100%;
+}
+
+img{
+    max-width:100%;
+    height:202.8px;
+    display:block;
+    /* border:10px solid black;  */ /* 測試,前面img會套到*/
+}
+
+h4{
+    background-color:#C4E1FF;
+    margin:0px;height:40px;
+    text-align: center;
+    line-height: 2.5;
+
+}
+
+@media (max-width:1200px){
+    .box{
+        width:45%;
+    }
+    img{
+        width:540px;
+        height:auto;
+    }
+
+}
+
+@media (max-width:600px){
+    .box{
+        width:90%;
+    }
+
+    .item{display:none;}
+    #icon{display:block;}
+}
+
+button{
+    padding:5px;
+}
+
+footer{
+    height:100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+footer div{
+    flex:none;
+    text-align: center;
+}
