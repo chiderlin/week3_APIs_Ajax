@@ -5,7 +5,8 @@ header{
     padding:0px;
     position:fixed;top:0px;width:100%;height:45px; 
     background-color: white;
-    z-index:100; /* 把抬頭固定的地方放在網頁最上層!*/
+    z-index:100;
+    /* 把抬頭固定的地方放在網頁最上層!*/
 }
 
 .blank{
