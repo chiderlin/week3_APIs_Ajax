@@ -1,0 +1,6 @@
+div + img 
+調整圖片的方式
+
+CSS - object-fit
+
+用這個可以大概設定比例
