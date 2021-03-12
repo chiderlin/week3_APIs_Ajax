@@ -4,9 +4,8 @@ header{
     display:flex;
     padding:0px;
     position:fixed;top:0px;width:100%;height:45px; 
-    background-color: white;
-    z-index:100;
-    /* 把抬頭固定的地方放在網頁最上層!*/
+	background-color: white;
+    z-index:100; /* 把抬頭固定的地方放在網頁最上層!*/
 }
 
 .blank{
@@ -156,6 +155,24 @@ h4{
     .item{display:none;}
     #icon{display:block;}
 }
+
+.top{
+    display:none;
+    width:60px;height:60px;
+    background-color: #0072E3;
+    position:fixed;top:80%;right:2%; /*top&tight要給相對位置% 才能正確顯示出來， 因為螢幕大小不同不能給固定數字*/
+    z-index:99;
+    border-radius: 4px;
+    font-size: 20px;color:white;
+    text-align: center;
+    line-height:2.8;
+}
+.top:hover{
+    background-color:#7B7B7B;
+    cursor:pointer;
+}
+
+
 
 button{
     padding:5px;

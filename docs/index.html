@@ -9,6 +9,7 @@
             let title_list = [];
             let img_url = [];
             let count_views = 0;
+
             window.onload = function() {
                     let req = new XMLHttpRequest();
                     req.open("get","https://padax.github.io/taipei-day-trip-resources/taipei-attractions.json")
@@ -19,9 +20,24 @@
                         renderImg();
                     }
                     req.send();
-                    
+
+                    // Load More button
                     let get_more_data = document.getElementById("getMoreData");  
                     get_more_data.addEventListener("click", renderImg);
+
+                    // back to top button
+                    let top = document.querySelector(".top");
+                    top.addEventListener("click", function() {
+                        document.body.scrollTop = 0; // for Safari
+                        document.documentElement.scrollTop = 0; // for chrome, firefox...
+                    });
+                    window.onscroll = function scrollFunction(){ 
+                        if(document.documentElement.scrollTop>20 || document.body.scrollTop>20) {
+                            top.style.display = "block";
+                        }else {
+                            top.style.display = "none";
+                            }
+                        }
                 }
                 // Module
                 function cleanData(raw_data) {
@@ -62,6 +78,7 @@
                         }
                     }
                 }
+                
         </script>
     </head>
     <body>
@@ -87,6 +104,7 @@
             <div class="welcome">Welcome to MyHome</div>
         </nav>
         <main>
+            <div class="top">Top</div>
         </main>
         <footer>
             <div>
